@@ -1053,21 +1053,30 @@
                     <div class="modal-body">
                         <div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="senha-atual-usuario" placeholder="Senha Atual">
+                                <input type="password" class="form-control" id="senha-atual" placeholder="Senha Atual">
+                                <div id="mensagem-erro-senha-atual" class="invalid-feedback">
+                                    Informe a senha atual.
+                                </div>
                             </div>
                             
                             <div class="form-group">
-                                <input type="password" class="form-control" id="senha-nova-usuario" placeholder="Nova Senha">
+                                <input id="nova-senha" type="password" class="form-control" placeholder="Nova Senha">
+                                <div id="mensagem-erro-nova-senha" class="invalid-feedback">
+                                    Informe a nova senha.
+                                </div>
                             </div>
                             
                             <div class="form-group">
-                                <input type="password" class="form-control" id="senha-nova-usuario2" placeholder="Confirmar Nova Senha">
+                                <input id="confirma-nova-senha" type="password" class="form-control" placeholder="Confirmar Nova Senha">
+                                <div id="mensagem-erro-confirma-nova-senha" class="invalid-feedback">
+                                    Confirme a nova senha.
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalFecharConfirmacaoSenha">Fechar</button>
-                        <button type="button" class="btn btn-primary" onclick="confirmarAlteracaoSenha()">Confirmar</button>
+                        <button type="button" class="btn btn-primary" onclick="confirmarAlteracaoSenha()">Confirmar</button>    
                     </div>
                 </div>
             </div>
@@ -1085,5 +1094,6 @@
 <script src="js/veiculo.js"></script>
 <script src="js/painel.js"></script>
 <script src="js/login.js"></script>
+<script src="js/senha.js"></script>
 
 </html>
