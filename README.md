@@ -1,21 +1,26 @@
 # Projeto Area Azul
-## PROJETO INTEGRADOR
+## PROJETO INTEGRADOR - FEITO
+
+## FEITO
 ALTERACAO 01 - Grupo Todos
 * Criar Nova Conta - Usuario
   * Deve validar as 2 senhas no confirmar Senha. 
   * BACKEND - TESTAR NO INSOMNIA
   * FRONTEND - FAZER E SE TIVER DUVIDAS - CHAMAR PROFESSOR
 
+## FEITO
 ALTERACAO 03 - Grupo Mikael -  
 * Ao confirmar Perfil, deve atualizar o perfil
   * BACKEND - TESTAR NO INSOMNIA
   * FRONTEND - FAZER E SE TIVER DUVIDAS - CHAMAR PROFESSOR
 
+## FEITO
 ALTERACAO 05 - Grupo Todos - Feito em sala de aula
 * Criar a rota para alterar a senha do usuario:
   * Deve validar a senha atual ao confirmar a alteracao da Senha; 
   * As duas senhas informadas para a nova senha devem coincidir;
 
+## FEITO
 ALTERACAO 07 - Análise de Requisitos
 * Criar os requisitos funcionais para as telas/paginas abaixo
   * Pagina de Login
@@ -30,10 +35,12 @@ ALTERACAO 07 - Análise de Requisitos
   * Atividades
     * Sistema deve inserir as atividades de estacionamento na aba Atividades
 
+## FEITO
 ALTERACAO 08 - Teste de Software
 * Criar os testes de acordo com a Analise de Requisitos
 * Criar apresentação de Projeto Integrador do Sistema.
 
+## NÃO FOI FEITO MAS BELEZA
 ALTERACAO 09
 * Criar uma lista de arquivo com nome da funcao que foi alterada para posterior integracao dos
 * sistemas-FRONTEND E BACKEND.

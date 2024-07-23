@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import bancocrudspringboot.exception.ResourceNotFoundException;
+import bancocrudspringboot.model.Cartao;
 import bancocrudspringboot.model.Login;
 import bancocrudspringboot.model.Usuario;
 import bancocrudspringboot.repository.UsuarioRepository;
@@ -62,6 +63,8 @@ public class UsuarioController {
 		String email = cadastro.getEmail();
 		String senha = cadastro.getSenha();
 
+		System.out.println("Aqui rsrs " + email + ' ' + senha);
+
 		Usuario usuario = this.usuarioRepository.findUsuarioByEmailAndSenha(email, senha)
 				.orElseThrow(() -> new ResourceNotFoundException("Usuario ou senha inválido!"));
 
@@ -83,4 +86,21 @@ public class UsuarioController {
 		
 		return ResponseEntity.ok(this.usuarioRepository.save(cadastro));
 	}
+
+	// Altera Perfil    
+	@PutMapping("/usuario/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<Usuario> updateCadastro(@PathVariable(value = "id") Long cadastroId,
+												  @Validated @RequestBody 
+				 Usuario cadastroCaracteristicas) throws ResourceNotFoundException {
+					Usuario cadastro = usuarioRepository.findById(cadastroId)
+					.orElseThrow(() -> new ResourceNotFoundException("Cadastro não encontrado para o ID : " + cadastroId));
+
+		cadastro.setNome(cadastroCaracteristicas.getNome());
+		cadastro.setCpf(cadastroCaracteristicas.getCpf());
+		cadastro.setEmail(cadastroCaracteristicas.getEmail());
+
+		return ResponseEntity.ok(this.usuarioRepository.save(cadastro));
+	}
+
 }

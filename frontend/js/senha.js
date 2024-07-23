@@ -1,10 +1,40 @@
 
 function confirmarAlteracaoSenha() {
-    if (validarNovaSenha() === false) {
+    if (validarCamposNovaSenha() === false) {
         return
     }
 
+    validaSenhaAtualEAtualiza();
 
+    $('#modal-alterar-senha').modal('toggle'); 
+
+    alert('Senha alterada!');
+}
+
+
+// Altera senha usuário 
+function alterarSenhaUsuario(idUsuario){
+    const senha = document.querySelector("#nova-senha").value;
+    const body = {
+        senha : senha
+    };
+
+    callApiPost("PUT", "senhausuario/" + idUsuario, function(data) {   
+
+        // Altera senha
+        if (data.mensagem != "" && data.mensagem != undefined) {
+            alert('Erro ao alterar senha: ' + data.mensagem)
+            return false;
+        } else {
+            return true
+        }
+
+    }, body);
+}
+
+
+// Valida senha atual do usuário
+async function validaSenhaAtualEAtualiza() {
     const email = document.querySelector("#email-usuario").value;
     const senha = document.querySelector("#senha-atual").value;
 
@@ -12,44 +42,26 @@ function confirmarAlteracaoSenha() {
         email : email,
         senha : senha
     };
-    
+
     callApiPost("POST", "login", function(data) {
 
-        // VALIDAR LOGIN 
-        if(data.mensagem != "" && data.mensagem != undefined){
-            // alert(data.mensagem);
-
+        // VALIDAR LOGIN
+        if (data.id) {
+            alterarSenhaUsuario(data.id);
+        } else {
             document.querySelector('#senha-atual').classList.add('is-invalid');
 
             let msgErroSenhaAtual = document.querySelector('#mensagem-erro-senha-atual');
-            msgErroSenhaAtual.innerText = data.mensagem;
+            msgErroSenhaAtual.innerText = 'Senha atual inválida';
             msgErroSenhaAtual.style.display = 'block';
-
-            return false;
         }
 
-        // APOS VALIDAR O LOGIN
-        // ALTERA A SENHA
-        alterarSenhaUsuario();
     }, body);
 }
-
-function alterarSenhaUsuario(){
-    const senha = document.querySelector("#nova-senha").value;
-    const body = {
-        senha : senha
-    };
-
-    const id_usuario_logado = document.querySelector("#usuario_logado").value;
-    
-    callApiPost("PUT", "senhausuario/" + id_usuario_logado, function(data) {        
-    }, body);
-}
-
 
 
 // Confirmar a nova senha e confirmação da nova senha
-function validarNovaSenha() {
+function validarCamposNovaSenha() {
     let senhaAtual = document.querySelector('#senha-atual');
     let novaSenha = document.querySelector('#nova-senha');
     let confirmaNovaSenha = document.querySelector('#confirma-nova-senha');
@@ -57,11 +69,13 @@ function validarNovaSenha() {
     let novaSenhaValor = novaSenha.value;
     let confirmaNovaSenhaValor = confirmaNovaSenha.value;
 
+    // Valida preenchimento dos campos
     if (senhaAtual === '' || novaSenhaValor === '' || confirmaNovaSenhaValor === '') {
         validarPreenchimentoCamposSenha();
         return false
     }
 
+    // Valida nova senha e confirmação da nova senha
     if (novaSenhaValor !== confirmaNovaSenhaValor) {
         novaSenha.classList.add('is-invalid');
         confirmaNovaSenha.classList.add('is-invalid');

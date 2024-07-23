@@ -7,15 +7,12 @@ function getUrlBase() {
 }
 
 function getVersao() {
-  if (isAluno()) {
-    return "";
-  }
-
   return "v1/";
 }
 
 function isServidorOnline() {
-  return true;
+  // true para produção
+  return false;
 }
 
 function isAluno() {
