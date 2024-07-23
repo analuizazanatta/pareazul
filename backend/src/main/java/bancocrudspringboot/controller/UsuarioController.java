@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import bancocrudspringboot.exception.ResourceNotFoundException;
-import bancocrudspringboot.model.Cartao;
 import bancocrudspringboot.model.Login;
 import bancocrudspringboot.model.Usuario;
 import bancocrudspringboot.repository.UsuarioRepository;
